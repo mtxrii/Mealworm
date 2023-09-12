@@ -16,7 +16,7 @@ async function getRestaurants() {
             headers: {
                 'accept': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Authorization': 'Bearer ' + keys.yelpAPIEndpoint
+                'Authorization': 'Bearer ' + keys.yelpApiKey
             }
         });
         return response.data;
