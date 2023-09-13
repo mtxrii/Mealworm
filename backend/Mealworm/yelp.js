@@ -1,6 +1,8 @@
 const axios = require('axios');
 const keys = require('./keys.js')
 
+const ERR_MSG = 'YELP_ERROR';
+
 function buildSearch(location, distance, cuisine) {
     let search = '?term=restaurants' +
                  '&location=' + location +
@@ -21,8 +23,9 @@ async function getRestaurants() {
         });
         return response.data;
     } catch(error) {
-        return error;
+        return ERR_MSG;
     }
 }
 
 exports.getRestaurants = getRestaurants;
+exports.YELP_ERR_MSG = ERR_MSG;
