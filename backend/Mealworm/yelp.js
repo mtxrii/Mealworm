@@ -46,7 +46,8 @@ function parseData(data, radius) {
             address: restaurant.location.display_address,
             phone: restaurant.display_phone,
             website: restaurant.url,
-            distance: parseFloat((restaurant.distance / 1609.344).toFixed(1)) // In miles
+            distance: parseFloat((restaurant.distance / 1609.344).toFixed(1)), // In miles
+            price: (restaurant.price == null ? 0 : restaurant.price.length)
         });
     });
 
