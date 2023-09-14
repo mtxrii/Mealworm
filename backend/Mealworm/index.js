@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getRestaurants, YELP_ERR_MSG } = require('./yelp');
+const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./yelp');
 
 const app = express();
 const port = 3000;
@@ -15,13 +15,13 @@ app.use(cors());
 app.get('/yelp', async (req, res) => {
     console.log('Request received at /yelp');
 
-    const data = await getRestaurants();
+    const data = await getYelpRestaurants();
     if (data === YELP_ERR_MSG) {
         res.status(400).json(DEFAULT_ERR_RESPONSE_BODY).end();
         return;
     }
 
-    res.status(200).json(data).end();
+    res.status(200).json(parseYelpData(data)).end();
 });
 
 app.listen(port, () => {

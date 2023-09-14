@@ -27,5 +27,29 @@ async function getRestaurants() {
     }
 }
 
-exports.getRestaurants = getRestaurants;
+function parseData(data) {
+    const parsedData = {
+        provider: "Yelp",
+        totalResults: data.total,
+        restaurants: []
+    }
+
+    data.businesses.forEach(restaurant => {
+        parsedData.restaurants.push({
+            name: restaurant.name,
+            imageUrl: restaurant.image_url,
+            categories: restaurant.categories.map(category => category.title),
+            rating: restaurant.rating,
+            address: restaurant.location.display_address,
+            phone: restaurant.display_phone,
+            website: restaurant.url,
+            distance: parseFloat((restaurant.distance / 1609.344).toFixed(1)) // In miles
+        });
+    });
+
+    return parsedData;
+}
+
+exports.getYelpRestaurants = getRestaurants;
+exports.parseYelpData = parseData;
 exports.YELP_ERR_MSG = ERR_MSG;
