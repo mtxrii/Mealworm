@@ -1,5 +1,5 @@
 const axios = require('axios');
-const keys = require('./keys.js');
+const keys = require('../keys.js');
 
 const ERR_MSG = 'YELP_ERROR';
 

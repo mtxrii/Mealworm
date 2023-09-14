@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./yelp');
-const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./google');
+const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./fetchRequest/yelp');
+const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./fetchRequest/google');
 
 const app = express();
 const port = 3000;
