@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./yelp');
-const { getGoogleRestaurants, GOOGLE_ERR_MSG } = require('./google');
+const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./google');
 
 const app = express();
 const port = 3000;
@@ -46,12 +46,11 @@ app.get('/google', async (req, res) => {
         return;
     }
 
-    // const response = {
-    //     status: "success",
-    //     data: parseYelpData(data, param_radius)
-    // };
-    // res.status(200).json(response).end();
-    res.status(200).json(data).end();
+    const response = {
+        status: "success",
+        data: parseGoogleData(data, param_radius)
+    };
+    res.status(200).json(response).end();
 });
 
 app.listen(port, () => {
