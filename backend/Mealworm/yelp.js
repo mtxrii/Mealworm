@@ -5,8 +5,9 @@ const ERR_MSG = 'YELP_ERROR';
 
 function buildSearch(location, distance, cuisine) {
     let search = '?term=restaurants' +
+                 '&limit=' + 50 + // 50 is the maximum
                  '&location=' + location +
-                 '&radius=' + (distance * 1609) +
+                 '&radius=' + (distance * 1610) + // In meters
                  '&categories=' + cuisine;
     return 'https://api.yelp.com/v3/businesses/search' + search;
 }
@@ -23,6 +24,7 @@ async function getRestaurants() {
         });
         return response.data;
     } catch(error) {
+        console.log(error.response.data);
         return ERR_MSG;
     }
 }
@@ -30,7 +32,7 @@ async function getRestaurants() {
 function parseData(data) {
     const parsedData = {
         provider: "Yelp",
-        totalResults: data.total,
+        totalResults: data.businesses.length,
         restaurants: []
     }
 
