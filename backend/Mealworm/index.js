@@ -21,7 +21,11 @@ app.get('/yelp', async (req, res) => {
         return;
     }
 
-    res.status(200).json(parseYelpData(data)).end();
+    const response = {
+        status: "success",
+        data: parseYelpData(data)
+    };
+    res.status(200).json(response).end();
 });
 
 app.listen(port, () => {
