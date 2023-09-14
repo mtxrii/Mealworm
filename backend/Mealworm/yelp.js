@@ -1,5 +1,5 @@
 const axios = require('axios');
-const keys = require('./keys.js')
+const keys = require('./keys.js');
 
 const ERR_MSG = 'YELP_ERROR';
 
@@ -12,8 +12,8 @@ function buildSearch(location, distance, cuisine) {
     return 'https://api.yelp.com/v3/businesses/search' + search;
 }
 
-async function getRestaurants() {
-    const yelpAPIEndpoint = buildSearch('mountain view', 3, 'mexican');
+async function getRestaurants(location, distance, cuisine) {
+    const yelpAPIEndpoint = buildSearch(location, distance, cuisine);
     try {
         const response = await axios.get(yelpAPIEndpoint, {
             headers: {
@@ -29,12 +29,13 @@ async function getRestaurants() {
     }
 }
 
-function parseData(data) {
+function parseData(data, radius) {
     const parsedData = {
         provider: "Yelp",
+        searchRadius: radius,
         totalResults: data.businesses.length,
         restaurants: []
-    }
+    };
 
     data.businesses.forEach(restaurant => {
         parsedData.restaurants.push({

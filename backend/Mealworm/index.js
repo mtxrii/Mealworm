@@ -15,7 +15,11 @@ app.use(cors());
 app.get('/yelp', async (req, res) => {
     console.log('Request received at /yelp');
 
-    const data = await getYelpRestaurants();
+    const param_location = 'mountain view';
+    const param_radius = 3;
+    const param_cuisine = 'mexican';
+
+    const data = await getYelpRestaurants(param_location, param_radius, param_cuisine);
     if (data === YELP_ERR_MSG) {
         res.status(400).json(DEFAULT_ERR_RESPONSE_BODY).end();
         return;
@@ -23,7 +27,7 @@ app.get('/yelp', async (req, res) => {
 
     const response = {
         status: "success",
-        data: parseYelpData(data)
+        data: parseYelpData(data, param_radius)
     };
     res.status(200).json(response).end();
 });
