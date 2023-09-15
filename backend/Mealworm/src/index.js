@@ -68,6 +68,14 @@ app.get('/google', async (req, res) => {
         return;
     }
 
+    if (keys.googleApiKey === '') {
+        res.status(400).json({
+            status: "error",
+            message: "no API key configured on this server for use with Google Places API."
+        }).end();
+        return;
+    }
+
     const param_location = req.query.location;
     const param_radius = parseInt(req.query.distance);
 
