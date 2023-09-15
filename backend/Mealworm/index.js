@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const keys = require('./keys');
 const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./fetchRequest/yelp');
 const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./fetchRequest/google');
 const { hasAllParams } = require('./util');
@@ -17,6 +18,11 @@ const MISSING_PARAMS_ERR_RESPONSE_BODY = {
     message: "missing required params! Needs: key, location, distance."
 }
 
+const WRONG_KEY_ERR_RESPONSE_BODY = {
+    status: "error",
+    message: "key is invalid."
+}
+
 app.use(cors());
 
 app.get('/yelp', async (req, res) => {
@@ -24,6 +30,11 @@ app.get('/yelp', async (req, res) => {
 
     if (!hasAllParams(req)) {
         res.status(400).json(MISSING_PARAMS_ERR_RESPONSE_BODY).end();
+        return;
+    }
+
+    if (req.query.key !== keys.mealwormApiKey) {
+        res.status(403).json(WRONG_KEY_ERR_RESPONSE_BODY).end();
         return;
     }
 
@@ -52,8 +63,13 @@ app.get('/google', async (req, res) => {
         return;
     }
 
-    const param_location = 'mountain view';
-    const param_radius = 3;
+    if (req.query.key !== keys.mealwormApiKey) {
+        res.status(403).json(WRONG_KEY_ERR_RESPONSE_BODY).end();
+        return;
+    }
+
+    const param_location = req.query.location;
+    const param_radius = parseInt(req.query.distance);
 
     const data = await getGoogleRestaurants(param_location, param_radius);
     if (data === GOOGLE_ERR_MSG) {
