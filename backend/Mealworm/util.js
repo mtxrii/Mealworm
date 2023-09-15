@@ -17,4 +17,13 @@ function shuffle(array) {
     return array;
 }
 
+function hasAllParams(req) {
+  const hasKey = req.query.key != null;
+  const hasLoc = req.query.location != null;
+  const hasDis = req.query.distance != null;
+  const disIsInt = !isNaN(req.query.distance);
+  return hasKey && hasLoc && hasDis && disIsInt;
+}
+
 exports.shuffle = shuffle;
+exports.hasAllParams = hasAllParams;
