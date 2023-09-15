@@ -3,8 +3,8 @@ const keys = require('../keys.js');
 
 const ERR_MSG = 'GOOGLE_ERROR';
 
-function buildSearch(location, distance) {
-    location = '37.386051%2C-122.083855';
+async function buildSearch(location, distance) {
+    location = await getLatLong(location);
     let search = '?key=' + keys.googleApiKey +
                  '&location=' + location +
                  '&radius=' + (distance * 1610) + // In meters
@@ -20,13 +20,29 @@ function buildImageSearch(photoObject) {
     return 'https://maps.googleapis.com/maps/api/place/photo' + search;
 }
 
+async function getLatLong(address) {
+    const search = 'http://api.positionstack.com/v1/forward' +
+                   '?access_key=' + keys.positionStackApiKey +
+                   '&query=' + address;
+    try {
+        const response = await axios.get(search);
+        if (response.error != null) {
+            return null;
+        }
+
+        return response.data.data[0].latitude + ',' + response.data.data[0].longitude;
+    } catch(error) {
+        console.log(error);
+    }
+}
+
 async function getRestaurants(location, distance, cuisine) {
-    const googleAPIEndpoint = buildSearch(location, distance);
+    const googleAPIEndpoint = await buildSearch(location, distance);
     try {
         const response = await axios.get(googleAPIEndpoint);
         return response.data;
     } catch(error) {
-        console.log(error);
+        console.log(error.response.data);
         return ERR_MSG;
     }
 }
