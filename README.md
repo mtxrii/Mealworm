@@ -19,7 +19,7 @@ This monorepo contains both the client and server. Clone it locally to get start
 4. Copy file named `keys.spec.js`
    1. Obtain required API keys (instructions in the [file](https://github.com/mtxrii/Mealworm/blob/main/backend/Mealworm/src/keys.spec.js))
    2. Rename file to `keys.js`
-5. Open file named [`index.js`](https://github.com/mtxrii/Mealworm/blob/main/backend/Mealworm/src/index.js#L9)
+5. Open file named [`index.js`](https://github.com/mtxrii/Mealworm/blob/fe509ce72fe6557551c51b8410d1f4d3609e8e48/backend/Mealworm/src/index.js#L9)
    1. Change `const port = 3030` to whatever you'd like, or leave it as 3030.
 6. Run `node src/index.js`
 
