@@ -6,7 +6,7 @@ const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./fet
 const { hasAllParams } = require('./util');
 
 const app = express();
-const port = 3000;
+const port = 3030;
 
 const DEFAULT_ERR_RESPONSE_BODY = {
     status: "error",
