@@ -38,9 +38,8 @@ app.get('/google', async (req, res) => {
 
     const param_location = 'mountain view';
     const param_radius = 3;
-    const param_cuisine = 'mexican';
 
-    const data = await getGoogleRestaurants(param_location, param_radius, param_cuisine);
+    const data = await getGoogleRestaurants(param_location, param_radius);
     if (data === GOOGLE_ERR_MSG) {
         res.status(400).json(DEFAULT_ERR_RESPONSE_BODY).end();
         return;

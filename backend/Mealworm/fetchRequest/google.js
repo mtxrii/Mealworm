@@ -36,7 +36,7 @@ async function getLatLong(address) {
     }
 }
 
-async function getRestaurants(location, distance, cuisine) {
+async function getRestaurants(location, distance) {
     const googleAPIEndpoint = await buildSearch(location, distance);
     try {
         const response = await axios.get(googleAPIEndpoint);

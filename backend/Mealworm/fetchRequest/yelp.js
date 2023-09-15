@@ -7,8 +7,11 @@ function buildSearch(location, distance, cuisine) {
     let search = '?term=restaurants' +
                  '&limit=' + 50 + // 50 is the maximum
                  '&location=' + location +
-                 '&radius=' + (distance * 1610) + // In meters
-                 '&categories=' + cuisine;
+                 '&radius=' + (distance * 1610); // In meters
+
+    if (cuisine != null) {
+        search += '&categories=' + cuisine;
+    }
     return 'https://api.yelp.com/v3/businesses/search' + search;
 }
 
