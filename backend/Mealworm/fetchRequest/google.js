@@ -1,5 +1,6 @@
 const axios = require('axios');
 const keys = require('../keys.js');
+const { shuffle } = require('../util.js');
 
 const ERR_MSG = 'GOOGLE_ERROR';
 
@@ -70,6 +71,7 @@ function parseData(data, radius) {
         parsedData.restaurants.push(resData);
     });
 
+    parsedData.restaurants = shuffle(parsedData.restaurants);
     return parsedData;
 }
 
