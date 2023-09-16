@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './assets/noun-worm-3088557.svg';
 import './App.css';
 
 function App() {
