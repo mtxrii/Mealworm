@@ -10,16 +10,19 @@ const port = 3030;
 
 const DEFAULT_ERR_RESPONSE_BODY = {
     status: "error",
+    error: "internal server error",
     message: "unable to retrieve data from source."
 }
 
 const MISSING_PARAMS_ERR_RESPONSE_BODY = {
     status: "error",
+    error: "bad request",
     message: "missing required params! Needs: key, location, distance."
 }
 
 const WRONG_KEY_ERR_RESPONSE_BODY = {
     status: "error",
+    error: "unauthorized",
     message: "key is invalid."
 }
 
@@ -34,7 +37,7 @@ app.get('/yelp', async (req, res) => {
     }
 
     if (req.query.key !== keys.mealwormApiKey) {
-        res.status(403).json(WRONG_KEY_ERR_RESPONSE_BODY).end();
+        res.status(401).json(WRONG_KEY_ERR_RESPONSE_BODY).end();
         return;
     }
 
@@ -44,7 +47,7 @@ app.get('/yelp', async (req, res) => {
 
     const data = await getYelpRestaurants(param_location, param_radius, param_cuisine);
     if (data === YELP_ERR_MSG) {
-        res.status(400).json(DEFAULT_ERR_RESPONSE_BODY).end();
+        res.status(500).json(DEFAULT_ERR_RESPONSE_BODY).end();
         return;
     }
 
@@ -64,7 +67,16 @@ app.get('/google', async (req, res) => {
     }
 
     if (req.query.key !== keys.mealwormApiKey) {
-        res.status(403).json(WRONG_KEY_ERR_RESPONSE_BODY).end();
+        res.status(401).json(WRONG_KEY_ERR_RESPONSE_BODY).end();
+        return;
+    }
+
+    if (keys.googleApiKey === '') {
+        res.status(502).json({
+            status: "error",
+            error: "bad gateway",
+            message: "no API key configured on this server for use with Google Places API."
+        }).end();
         return;
     }
 
@@ -73,7 +85,7 @@ app.get('/google', async (req, res) => {
 
     const data = await getGoogleRestaurants(param_location, param_radius);
     if (data === GOOGLE_ERR_MSG) {
-        res.status(400).json(DEFAULT_ERR_RESPONSE_BODY).end();
+        res.status(500).json(DEFAULT_ERR_RESPONSE_BODY).end();
         return;
     }
 
