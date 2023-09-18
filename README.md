@@ -3,10 +3,11 @@ This app will gather a list of randomly selected restaurants near you (or wherev
 
 ## Stack
 **Frontend**
-* React
+* [React](https://create-react-app.dev/)
 
 **Backend**
-* [Node](https://nodejs.org/en/about), [Express](https://expressjs.com/), & [Axios](https://axios-http.com/docs/intro)
+* [Node.js](https://nodejs.org/en/about)
+* [Axios](https://axios-http.com/docs/intro) & [Express](https://expressjs.com/)
 * [Yelp Fusion API](https://fusion.yelp.com/)
 * [Google Places API](https://developers.google.com/maps/documentation/places/web-service)
 * [Positionstack API](https://positionstack.com/)
