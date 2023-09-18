@@ -1,11 +1,11 @@
-import logo from './assets/noun-worm-3088557.svg';
+import LandingLogo from './components/LandingLogo';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <LandingLogo/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
