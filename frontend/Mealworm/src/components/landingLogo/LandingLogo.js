@@ -1,4 +1,4 @@
-import logo from '../assets/noun-worm-3088557.svg';
+import logo from '../../assets/noun-worm-3088557.svg';
 import './LandingLogo.css';
 
 const APP_CATCHPHRASES = [

@@ -1,23 +1,14 @@
-import LandingLogo from './components/LandingLogo';
+import LandingLogo from './components/landingLogo/LandingLogo';
+import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <LandingLogo/>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <LandingLogo />
       </header>
+      <SearchEngineSwitch />
     </div>
   );
 }
