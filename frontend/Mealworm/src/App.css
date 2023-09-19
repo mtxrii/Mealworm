@@ -3,7 +3,20 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: linear-gradient(
+    to right top,
+    #fcd4eb,
+    #f4d0f0,
+    #e8cdf5,
+    #dacbf9,
+    #c8cafd,
+    #b8cfff,
+    #a8d4ff,
+    #9ad8ff,
+    #93e3ff,
+    #90edff,
+    #92f6ff,
+    #9bfff9);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
