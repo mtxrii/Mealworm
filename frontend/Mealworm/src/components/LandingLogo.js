@@ -3,11 +3,11 @@ import './LandingLogo.css';
 
 function App() {
   return (
-    <div>
-      <img src={logo} className="App-logo" alt="logo" />
-      <div>
-        <h1>Mealworm</h1>
-        <h4></h4>
+    <div className="App-logo-container">
+      <img src={logo} className="App-logo-img" alt="logo" />
+      <div className="App-logo-text">
+        <h1 className="App-logo-title">Mealworm</h1>
+        <h3 className="App-logo-subtitle">Find somewhere new to eat</h3>
       </div>
     </div>
   );
