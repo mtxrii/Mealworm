@@ -7,7 +7,10 @@ import './App.css';
 const APP_CATCHPHRASES = [
   "Find somewhere new to eat",
   "Find random cool restaurants near you",
-  "Get some new food suggestions"
+  "Get some new food suggestions",
+  "Check out some new restaurants",
+  "Discover new food near you",
+  "See the best restaurants around"
 ]
 
 function getRandomCatchphrase() {
