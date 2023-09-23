@@ -1,5 +1,6 @@
 import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
+import SearchInputFields from './components/searchInputFields/SearchInputFields';
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <LandingLogo />
       </header>
       <SearchEngineSwitch />
+      <SearchInputFields />
     </div>
   );
 }

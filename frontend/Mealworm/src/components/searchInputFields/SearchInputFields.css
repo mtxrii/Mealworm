@@ -1,0 +1,18 @@
+.SIF-block {
+    align-self: center;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.SIF-filters-row {
+    display: flex;
+    margin-top: 20px;
+}
+
+.SIF-filters-padding {
+    margin: 10px;
+}
+
+.SIF-cuisine {
+    text-align: left;
+}
