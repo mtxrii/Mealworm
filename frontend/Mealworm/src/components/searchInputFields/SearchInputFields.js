@@ -77,15 +77,24 @@ export default function SearchInputFields(props) {
     return (
         <div className="SIF-block">
             <div className="SIF-location-row">
-                <TextField label="Enter location" variant="filled" color="primary" fullWidth />
+                <TextField label="Enter location" variant="filled" color="primary" fullWidth onChange={
+                        (event) => props.updateLocation(event.target.value)
+                    }
+                />
             </div>
             <div className="SIF-filters-row">
-                <TextField label="Distance (mi)" variant="filled" fullWidth type="number" />
+                <TextField label="Distance (mi)" variant="filled" fullWidth type="number"  onChange={
+                        (event) => props.updateDistance(event.target.value)
+                    }
+                />
                 {props.isUsingGoogle ? null :
                     <div className="SIF-filters-padding" />
                 }
                 {props.isUsingGoogle ? null :
-                    <TextField label="Cuisine" variant="filled" fullWidth select className="SIF-cuisine" >
+                    <TextField label="Cuisine" variant="filled" fullWidth select className="SIF-cuisine" onChange={
+                            (event) => props.updateCuisine(event.target.value)
+                        }
+                    >
                         {cuisines.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
