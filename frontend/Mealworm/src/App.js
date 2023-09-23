@@ -23,8 +23,8 @@ function App() {
       <header className="App-header">
         <LandingLogo catchphrase={catchphrase} />
       </header>
-      <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle}/>
-      <SearchInputFields />
+      <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle} />
+      <SearchInputFields isUsingGoogle={isGoogle} />
     </div>
   );
 }

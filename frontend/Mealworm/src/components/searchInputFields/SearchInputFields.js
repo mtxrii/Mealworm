@@ -73,7 +73,7 @@ const cuisines = [
     }
 ];
  
-export default function SearchInputFields() {
+export default function SearchInputFields(props) {
     return (
         <div className="SIF-block">
             <div className="SIF-location-row">
@@ -81,14 +81,18 @@ export default function SearchInputFields() {
             </div>
             <div className="SIF-filters-row">
                 <TextField label="Distance (mi)" variant="filled" fullWidth type="number" />
-                <div className="SIF-filters-padding"/>
-                <TextField label="Cuisine" variant="filled" fullWidth select className="SIF-cuisine">
-                    {cuisines.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
+                {props.isUsingGoogle ? null :
+                    <div className="SIF-filters-padding" />
+                }
+                {props.isUsingGoogle ? null :
+                    <TextField label="Cuisine" variant="filled" fullWidth select className="SIF-cuisine" >
+                        {cuisines.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                }
             </div>
         </div>
     )
