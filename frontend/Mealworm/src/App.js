@@ -1,9 +1,18 @@
 import * as React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
 import './App.css';
 import SearchButton from './components/searchButton/SearchButton';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#007c72'
+    },
+  },
+});
 
 const APP_CATCHPHRASES = [
   "Find somewhere new to eat",
@@ -36,18 +45,20 @@ function App() {
         <LandingLogo catchphrase={catchphrase} />
       </header>
       <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle} />
-      <SearchInputFields
-        isUsingGoogle={isGoogle}
-        updateLocation={setLocation}
-        updateDistance={setDistance}
-        updateCuisine={setCuisine}
-      />
-      <SearchButton onClick={doSearch} data={{
-        location: location,
-        distance: distance,
-        isUsingGoogle: isGoogle,
-        cuisine: cuisine
-      }} />
+      <ThemeProvider theme={theme}>
+        <SearchInputFields
+          isUsingGoogle={isGoogle}
+          updateLocation={setLocation}
+          updateDistance={setDistance}
+          updateCuisine={setCuisine}
+        />
+        <SearchButton onClick={doSearch} data={{
+          location: location,
+          distance: distance,
+          isUsingGoogle: isGoogle,
+          cuisine: cuisine
+        }} />
+      </ThemeProvider>
     </div>
   );
 }
