@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import Tooltip from '@mui/material/Tooltip';
@@ -53,15 +52,13 @@ const MaterialUISwitch = styled(Switch)((props) => ({
   }
 }));
 
-export default function SearchEngineSwitch() {
-  const [checked, setChecked] = React.useState(false);
-
+export default function SearchEngineSwitch(props) {
   const handleChange = (event) => {
-    setChecked(event.target.checked);
+    props.setChecked(event.target.checked);
   };
 
   const yelpOrGoogle = () => {
-    if (checked) {
+    if (props.checked) {
       return 'Google';
     } else {
       return 'Yelp';
