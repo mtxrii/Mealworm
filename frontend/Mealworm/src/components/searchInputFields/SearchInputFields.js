@@ -3,74 +3,23 @@ import MenuItem from '@mui/material/MenuItem';
 import './SearchInputFields.css'
 
 const cuisines = [
-    {
-        value: 'ANY',
-        label: 'Any',
-    },
-    {
-        value: 'CHI',
-        label: 'Chinese',
-    },
-    {
-        value: 'JPE',
-        label: 'Japanese',
-    },
-    {
-        value: 'KOR',
-        label: 'Korean',
-    },
-    {
-        value: 'TAI',
-        label: 'Thai',
-    },
-    {
-        value: 'VTE',
-        label: 'Vietnamese',
-    },
-    {
-        value: 'ITA',
-        label: 'Italian',
-    },
-    {
-        value: 'FRE',
-        label: 'French',
-    },
-    {
-        value: 'MDE',
-        label: 'Mediterranean',
-    },
-    {
-        value: 'MEX',
-        label: 'Mexican',
-    },
-    {
-        value: 'USA',
-        label: 'American',
-    },
-    {
-        value: 'BBQ',
-        label: 'Barbeque',
-    },
-    {
-        value: 'BFT',
-        label: 'Breakfast',
-    },
-    {
-        value: 'BGR',
-        label: 'Burgers',
-    },
-    {
-        value: 'PZA',
-        label: 'Pizza',
-    },
-    {
-        value: 'SFD',
-        label: 'Seafood',
-    },
-    {
-        value: 'SHI',
-        label: 'Sushi',
-    }
+    { label: 'Any' },
+    { label: 'Chinese' },
+    { label: 'Japanese' },
+    { label: 'Korean' },
+    { label: 'Thai' },
+    { label: 'Vietnamese' },
+    { label: 'Italian' },
+    { label: 'French' },
+    { label: 'Mediterranean' },
+    { label: 'Mexican' },
+    { label: 'American' },
+    { label: 'Barbeque' },
+    { label: 'Breakfast' },
+    { label: 'Burgers' },
+    { label: 'Pizza' },
+    { label: 'Seafood' },
+    { abel: 'Sushi' }
 ];
  
 export default function SearchInputFields(props) {
@@ -96,7 +45,7 @@ export default function SearchInputFields(props) {
                         }
                     >
                         {cuisines.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
+                            <MenuItem key={option.label} value={option.label}>
                                 {option.label}
                             </MenuItem>
                         ))}
