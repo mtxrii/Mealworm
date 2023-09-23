@@ -3,8 +3,9 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
-import './App.css';
 import SearchButton from './components/searchButton/SearchButton';
+import { DEFAULT_KEYWORD } from './fetchRequest/dataGather';
+import './App.css';
 
 const theme = createTheme({
   palette: {
@@ -33,9 +34,9 @@ function App() {
   const [catchphrase] = React.useState(getRandomCatchphrase());
 
   const [isGoogle, setIsGoogle] = React.useState(false);
-  const [location, setLocation] = React.useState('default');
-  const [distance, setDistance] = React.useState('default');
-  const [cuisine,  setCuisine]  = React.useState('default');
+  const [location, setLocation] = React.useState(DEFAULT_KEYWORD);
+  const [distance, setDistance] = React.useState(DEFAULT_KEYWORD);
+  const [cuisine,  setCuisine]  = React.useState(DEFAULT_KEYWORD);
 
   const doSearch = (location, distance, isUsingGoogle, cuisine) => {
     hasResults(true);
