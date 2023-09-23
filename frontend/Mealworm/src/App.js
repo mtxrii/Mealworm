@@ -28,37 +28,47 @@ function getRandomCatchphrase() {
 }
 
 function App() {
+  const [showResultsPage, hasResults] = React.useState(false);
+  
   const [catchphrase] = React.useState(getRandomCatchphrase());
 
   const [isGoogle, setIsGoogle] = React.useState(false);
   const [location, setLocation] = React.useState('default');
-  const [distance, setDistance] = React.useState('3');
+  const [distance, setDistance] = React.useState('default');
   const [cuisine,  setCuisine]  = React.useState('default');
 
   const doSearch = (location, distance, isUsingGoogle, cuisine) => {
-    alert(location + " + " + distance + " + " + isUsingGoogle + " + " + cuisine);
+    hasResults(true);
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <LandingLogo catchphrase={catchphrase} />
-      </header>
-      <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle} />
-      <ThemeProvider theme={theme}>
-        <SearchInputFields
-          isUsingGoogle={isGoogle}
-          updateLocation={setLocation}
-          updateDistance={setDistance}
-          updateCuisine={setCuisine}
-        />
-        <SearchButton onClick={doSearch} data={{
-          location: location,
-          distance: distance,
-          isUsingGoogle: isGoogle,
-          cuisine: cuisine
-        }} />
-      </ThemeProvider>
+      {showResultsPage ? 
+        <div>
+          Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
+        </div>
+        :
+        <div>
+          <header className="App-header">
+            <LandingLogo catchphrase={catchphrase} />
+          </header>
+          <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle} />
+          <ThemeProvider theme={theme}>
+            <SearchInputFields
+              isUsingGoogle={isGoogle}
+              updateLocation={setLocation}
+              updateDistance={setDistance}
+              updateCuisine={setCuisine}
+            />
+            <SearchButton onClick={doSearch} data={{
+              location: location,
+              distance: distance,
+              isUsingGoogle: isGoogle,
+              cuisine: cuisine
+            }} />
+          </ThemeProvider>
+        </div>
+      }
     </div>
   );
 }
