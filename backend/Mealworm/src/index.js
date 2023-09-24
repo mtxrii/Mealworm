@@ -4,6 +4,7 @@ const keys = require('./keys');
 const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./fetchRequest/yelp');
 const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./fetchRequest/google');
 const { hasAllParams } = require('./util');
+const { logRequest } = require('./logger');
 
 const app = express();
 const port = 3030;
@@ -29,7 +30,7 @@ const WRONG_KEY_ERR_RESPONSE_BODY = {
 app.use(cors());
 
 app.get('/yelp', async (req, res) => {
-    console.log('Request received at /yelp');
+    logRequest('/yelp');
 
     if (!hasAllParams(req)) {
         res.status(400).json(MISSING_PARAMS_ERR_RESPONSE_BODY).end();
@@ -59,7 +60,7 @@ app.get('/yelp', async (req, res) => {
 });
 
 app.get('/google', async (req, res) => {
-    console.log('Request received at /google');
+    logRequest('/google');
 
     if (!hasAllParams(req)) {
         res.status(400).json(MISSING_PARAMS_ERR_RESPONSE_BODY).end();
@@ -97,7 +98,7 @@ app.get('/google', async (req, res) => {
 });
 
 app.get('/', async (req, res) => {
-    console.log('Request received at /');
+    logRequest('/');
 
     const response = {
         status: "success",
