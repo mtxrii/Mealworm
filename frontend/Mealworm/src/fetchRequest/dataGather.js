@@ -1,4 +1,5 @@
-import { backendApiKey } from "./keys.spec";
+import { backendApiKey } from "./keys.js";
+import axios from 'axios';
 
 export const DEFAULT_KEYWORD = 'default_value';
 export const ERROR_KEYWORD = 'API_ERR';
@@ -20,7 +21,7 @@ export async function getRestaurants(isGoogle, location, distance, cuisine) {
         distance = defaults.distanceDefault;
     }
     if (cuisine === DEFAULT_KEYWORD) {
-        distance = defaults.cuisineDefault;
+        cuisine = defaults.cuisineDefault;
     }
 
     let result;
@@ -35,11 +36,25 @@ export async function getRestaurants(isGoogle, location, distance, cuisine) {
 async function getYelpResults(location, distance, cuisine) {
     const param_key = '?key=' + backendApiKey;
     const param_location = "&location=" + location;
-    const param_distance = "&distance=" + Math.abs(parseInt(distance));
+    const param_distance = "&distance=" + distance.replaceAll('-', '');
     const param_cuisine  = (cuisine === "Any") ? "" : "&cuisine=" + cuisine;
 
-    const URL = backendUrl + 'yelp' + param_key + param_location + param_distance + param_cuisine;
-    //
+    let URL = backendUrl + 'yelp' + param_key + param_location + param_distance + param_cuisine;
+    URL = URL.replaceAll(' ', '%20');
+    try {
+        const response = await axios.get(URL, {
+            headers: {
+                'accept': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        });
+        console.log(response.data);
+        return response.data;
+    } catch(error) {
+        console.log(URL);
+        console.log(error);
+        return ERROR_KEYWORD;
+    }
 }
 
 async function getGoogleResults(location, distance) {

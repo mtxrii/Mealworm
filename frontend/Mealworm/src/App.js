@@ -4,7 +4,7 @@ import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
 import SearchButton from './components/searchButton/SearchButton';
-import { DEFAULT_KEYWORD } from './fetchRequest/dataGather';
+import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
 import './App.css';
 
 const theme = createTheme({
@@ -38,7 +38,12 @@ function App() {
   const [distance, setDistance] = React.useState(DEFAULT_KEYWORD);
   const [cuisine,  setCuisine]  = React.useState(DEFAULT_KEYWORD);
 
-  const doSearch = (location, distance, isUsingGoogle, cuisine) => {
+  const [data,  saveData]  = React.useState(null);
+
+  const doSearch = async (location, distance, isUsingGoogle, cuisine) => {
+    const response = await getRestaurants(isUsingGoogle, location, distance, cuisine);
+    saveData(response);
+
     hasResults(true);
   };
 
@@ -47,6 +52,10 @@ function App() {
       {showResultsPage ? 
         <div>
           Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
+          <br/>
+          {data.data.restaurants.map((restaurant) =>
+            <li key={restaurant.name}>{restaurant.name}</li>
+          )}
         </div>
         :
         <div>
