@@ -4,6 +4,8 @@ This app will gather a list of randomly selected restaurants near you (or wherev
 ## Stack
 **Frontend**
 * [React](https://create-react-app.dev/)
+* [Material UI](https://mui.com/material-ui/getting-started/)
+* [Axios](https://axios-http.com/docs/intro)
 
 **Backend**
 * [Node.js](https://nodejs.org/en/about)
