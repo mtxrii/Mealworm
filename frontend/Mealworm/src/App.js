@@ -3,8 +3,9 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
-import './App.css';
 import SearchButton from './components/searchButton/SearchButton';
+import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
+import './App.css';
 
 const theme = createTheme({
   palette: {
@@ -28,37 +29,56 @@ function getRandomCatchphrase() {
 }
 
 function App() {
+  const [showResultsPage, hasResults] = React.useState(false);
+  
   const [catchphrase] = React.useState(getRandomCatchphrase());
 
   const [isGoogle, setIsGoogle] = React.useState(false);
-  const [location, setLocation] = React.useState('default');
-  const [distance, setDistance] = React.useState('3');
-  const [cuisine,  setCuisine]  = React.useState('default');
+  const [location, setLocation] = React.useState(DEFAULT_KEYWORD);
+  const [distance, setDistance] = React.useState(DEFAULT_KEYWORD);
+  const [cuisine,  setCuisine]  = React.useState(DEFAULT_KEYWORD);
 
-  const doSearch = (location, distance, isUsingGoogle, cuisine) => {
-    alert(location + " + " + distance + " + " + isUsingGoogle + " + " + cuisine);
+  const [data,  saveData]  = React.useState(null);
+
+  const doSearch = async (location, distance, isUsingGoogle, cuisine) => {
+    const response = await getRestaurants(isUsingGoogle, location, distance, cuisine);
+    saveData(response);
+
+    hasResults(true);
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <LandingLogo catchphrase={catchphrase} />
-      </header>
-      <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle} />
-      <ThemeProvider theme={theme}>
-        <SearchInputFields
-          isUsingGoogle={isGoogle}
-          updateLocation={setLocation}
-          updateDistance={setDistance}
-          updateCuisine={setCuisine}
-        />
-        <SearchButton onClick={doSearch} data={{
-          location: location,
-          distance: distance,
-          isUsingGoogle: isGoogle,
-          cuisine: cuisine
-        }} />
-      </ThemeProvider>
+      {showResultsPage ? 
+        <div>
+          Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
+          <br/>
+          {data.data.restaurants.map((restaurant) =>
+            <li key={restaurant.name}>{restaurant.name}</li>
+          )}
+        </div>
+        :
+        <div>
+          <header className="App-header">
+            <LandingLogo catchphrase={catchphrase} />
+          </header>
+          <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle} />
+          <ThemeProvider theme={theme}>
+            <SearchInputFields
+              isUsingGoogle={isGoogle}
+              updateLocation={setLocation}
+              updateDistance={setDistance}
+              updateCuisine={setCuisine}
+            />
+            <SearchButton onClick={doSearch} data={{
+              location: location,
+              distance: distance,
+              isUsingGoogle: isGoogle,
+              cuisine: cuisine
+            }} />
+          </ThemeProvider>
+        </div>
+      }
     </div>
   );
 }
