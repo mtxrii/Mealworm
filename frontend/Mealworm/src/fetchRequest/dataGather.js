@@ -4,6 +4,8 @@ import axios from 'axios';
 export const DEFAULT_KEYWORD = 'default_value';
 export const ERROR_KEYWORD = 'API_ERR';
 
+const debugMode = true;
+
 const backendPort = '3030';
 const backendUrl = 'http://localhost:' + backendPort + '/'
 
@@ -48,11 +50,15 @@ async function getYelpResults(location, distance, cuisine) {
                 'Access-Control-Allow-Origin': '*'
             }
         });
-        console.log(response.data);
+        if (debugMode) {
+            console.log(response.data);
+        }
         return response.data;
     } catch(error) {
-        console.log(URL);
-        console.log(error);
+        if (debugMode) {
+            console.log(URL);
+            console.log(error);
+        }
         return ERROR_KEYWORD;
     }
 }
