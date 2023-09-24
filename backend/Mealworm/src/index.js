@@ -96,6 +96,16 @@ app.get('/google', async (req, res) => {
     res.status(200).json(response).end();
 });
 
+app.get('/', async (req, res) => {
+    console.log('Request received at /');
+
+    const response = {
+        status: "success",
+        data: "App is online"
+    };
+    res.status(200).json(response).end();
+});
+
 app.listen(port, () => {
     console.log('Server listening at http://localhost:' + port);
 })
