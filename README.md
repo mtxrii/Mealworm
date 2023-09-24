@@ -19,11 +19,19 @@ This monorepo contains both the client and server. Clone it locally to get start
 ### 1. Setup Backend
 2. Run `cd backend/Mealworm`
 3. Run `npm install`
-4. Copy file named `keys.spec.js`
+4. Copy file named `keys.spec.js` (it is inside `/src` dir)
    1. Obtain required API keys (instructions in the [file](https://github.com/mtxrii/Mealworm/blob/main/backend/Mealworm/src/keys.spec.js))
-   2. Rename file to `keys.js`
+      1. One of these keys is created by you and can be any password you want. It is used to ensure only your copy of the frontend accesses your copy of the backend (and uses your API keys)
+   3. Rename file to `keys.js`
 5. Open file named [`index.js`](https://github.com/mtxrii/Mealworm/blob/fe509ce72fe6557551c51b8410d1f4d3609e8e48/backend/Mealworm/src/index.js#L9)
    1. Change `const port = 3030` to whatever you'd like, or leave it as 3030.
-6. Run `node src/index.js`
+6. Run `node src/index.js` to start the backend server.
 
 ### 7. Setup Frontend
+8. Navigate to the frontend directory — return to root (`cd ../..` from backend dir) then run `cd frontend/Mealworm`
+9. Run `npm install`
+10. Copy file named `keys.spec.js` (it is inside `/src/fetchRequest` dir)
+    1. Replace the default value for [`backendApiKey`](https://github.com/mtxrii/Mealworm/blob/11c6816bc233cdd3cfacac9e8b5e564a9ba9a1a7/frontend/Mealworm/src/fetchRequest/keys.spec.js#L9) with the key you created in step 4.i.a
+    2. Rename file to `keys.js`
+11. Run `npm start` to start the frontend app.
+12. Navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser
