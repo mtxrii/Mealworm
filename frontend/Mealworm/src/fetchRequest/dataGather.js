@@ -64,5 +64,28 @@ async function getYelpResults(location, distance, cuisine) {
 }
 
 async function getGoogleResults(location, distance) {
-    //
+    const param_key = '?key=' + backendApiKey;
+    const param_location = "&location=" + location;
+    const param_distance = "&distance=" + distance.replaceAll('-', '');
+
+    let URL = backendUrl + 'google' + param_key + param_location + param_distance;
+    URL = URL.replaceAll(' ', '%20');
+    try {
+        const response = await axios.get(URL, {
+            headers: {
+                'accept': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        });
+        if (debugMode) {
+            console.log(response.data);
+        }
+        return response.data;
+    } catch(error) {
+        if (debugMode) {
+            console.log(URL);
+            console.log(error);
+        }
+        return ERROR_KEYWORD;
+    }
 }
