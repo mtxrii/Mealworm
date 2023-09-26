@@ -4,7 +4,7 @@ const keys = require('./keys');
 const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./fetchRequest/yelp');
 const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./fetchRequest/google');
 const { hasAllParams } = require('./util');
-const { logRequest } = require('./logger');
+const { logRequest, logMissingParams, logInvalidKey, logServerIssue } = require('./logger');
 
 const app = express();
 const port = 3030;
@@ -30,15 +30,17 @@ const WRONG_KEY_ERR_RESPONSE_BODY = {
 app.use(cors());
 
 app.get('/yelp', async (req, res) => {
-    logRequest('/yelp');
+    logRequest('/yelp', req);
 
     if (!hasAllParams(req)) {
         res.status(400).json(MISSING_PARAMS_ERR_RESPONSE_BODY).end();
+        logMissingParams();
         return;
     }
 
     if (req.query.key !== keys.mealwormApiKey) {
         res.status(401).json(WRONG_KEY_ERR_RESPONSE_BODY).end();
+        logInvalidKey();
         return;
     }
 
@@ -49,6 +51,7 @@ app.get('/yelp', async (req, res) => {
     const data = await getYelpRestaurants(param_location, param_radius, param_cuisine);
     if (data === YELP_ERR_MSG) {
         res.status(500).json(DEFAULT_ERR_RESPONSE_BODY).end();
+        logServerIssue('Yelp');
         return;
     }
 
@@ -60,15 +63,17 @@ app.get('/yelp', async (req, res) => {
 });
 
 app.get('/google', async (req, res) => {
-    logRequest('/google');
+    logRequest('/google', req);
 
     if (!hasAllParams(req)) {
         res.status(400).json(MISSING_PARAMS_ERR_RESPONSE_BODY).end();
+        logMissingParams();
         return;
     }
 
     if (req.query.key !== keys.mealwormApiKey) {
         res.status(401).json(WRONG_KEY_ERR_RESPONSE_BODY).end();
+        logInvalidKey();
         return;
     }
 
@@ -87,6 +92,7 @@ app.get('/google', async (req, res) => {
     const data = await getGoogleRestaurants(param_location, param_radius);
     if (data === GOOGLE_ERR_MSG) {
         res.status(500).json(DEFAULT_ERR_RESPONSE_BODY).end();
+        logServerIssue('Google');
         return;
     }
 
@@ -98,7 +104,7 @@ app.get('/google', async (req, res) => {
 });
 
 app.get('/', async (req, res) => {
-    logRequest('/');
+    logRequest('/', req);
 
     const response = {
         status: "success",
