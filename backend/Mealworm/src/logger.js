@@ -5,7 +5,10 @@ const REQUEST_RECIEVED_MSG = INFO_PREFIX + 'Request received at ';
 
 function logRequest(endpoint, request) {
     console.log(REQUEST_RECIEVED_MSG + endpoint);
-    console.log("Request params:\n" + Object.entries(request.query).toString());
+    console.log(" + Request params:");
+    for (const [key, value] of Object.entries(request.query)) {
+        console.log(` + + ${key}: ${value}`);
+    }
 }
 
 function logMissingParams() {
