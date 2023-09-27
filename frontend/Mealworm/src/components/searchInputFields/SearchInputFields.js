@@ -1,27 +1,8 @@
 import TextField from '@mui/material/TextField'; 
 import MenuItem from '@mui/material/MenuItem';
+import CUISINES from '../../metadata/cuisines.json';
 import './SearchInputFields.css'
 
-const cuisines = [
-    { label: 'Any' },
-    { label: 'Chinese' },
-    { label: 'Japanese' },
-    { label: 'Korean' },
-    { label: 'Thai' },
-    { label: 'Vietnamese' },
-    { label: 'Italian' },
-    { label: 'French' },
-    { label: 'Mediterranean' },
-    { label: 'Mexican' },
-    { label: 'American' },
-    { label: 'Barbeque' },
-    { label: 'Breakfast' },
-    { label: 'Burgers' },
-    { label: 'Pizza' },
-    { label: 'Seafood' },
-    { abel: 'Sushi' }
-];
- 
 export default function SearchInputFields(props) {
     return (
         <div className="SIF-block">
@@ -44,7 +25,7 @@ export default function SearchInputFields(props) {
                             (event) => props.updateCuisine(event.target.value)
                         }
                     >
-                        {cuisines.map((option) => (
+                        {CUISINES.cuisineOptions.map((option) => (
                             <MenuItem key={option.label} value={option.label}>
                                 {option.label}
                             </MenuItem>
