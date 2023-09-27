@@ -7,7 +7,7 @@ export const ERROR_KEYWORD = 'API_ERR';
 const debugMode = true;
 
 const backendPort = '3030';
-const backendUrl = 'http://localhost:' + backendPort + '/'
+const backendUrl = 'http://192.168.0.65:' + backendPort + '/'
 
 const defaults = {
     locationDefault: "Mountain View, CA",
