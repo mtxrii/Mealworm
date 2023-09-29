@@ -6,12 +6,13 @@ import SearchInputFields from './components/searchInputFields/SearchInputFields'
 import SearchButton from './components/searchButton/SearchButton';
 import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
 import CATCHPHRASES from './metadata/catchphrases.json';
+import CONFIG from './app-config.json';
 import './App.css';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#007c72'
+      main: CONFIG.buttonColor
     },
   },
 });

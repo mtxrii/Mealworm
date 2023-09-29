@@ -1,13 +1,13 @@
 import { backendApiKey } from "./keys.js";
 import axios from 'axios';
+import CONFIG from '../app-config.json';
 
 export const DEFAULT_KEYWORD = 'default_value';
 export const ERROR_KEYWORD = 'API_ERR';
 
 const debugMode = true;
 
-const backendPort = '3030';
-const backendUrl = 'http://192.168.0.65:' + backendPort + '/'
+const backendUrl = 'http://' + CONFIG.backendUrl + ':' + CONFIG.backendPort + '/'
 
 const defaults = {
     locationDefault: "Mountain View, CA",
