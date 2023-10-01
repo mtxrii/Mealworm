@@ -1,12 +1,14 @@
 const axios = require('axios');
 const keys = require('../keys.js');
 const { shuffle } = require('../util.js');
+const CONFIG = require('../../config.json');
 
 const ERR_MSG = 'YELP_ERROR';
 
 function buildSearch(location, distance, cuisine) {
     let search = '?term=restaurants' +
-                 '&limit=' + 50 + // 50 is the maximum
+                 '&limit=' + (CONFIG.yelpTotalResultsCount <= 50 ?
+                              CONFIG.yelpTotalResultsCount : 50) + // 50 is the maximum
                  '&location=' + location +
                  '&radius=' + (distance * 1610); // In meters
 
