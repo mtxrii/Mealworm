@@ -1,4 +1,5 @@
 {
     "appPort": 3030,
-    "yelpTotalResultsCount": 20
+    "yelpTotalResultsCount": 20,
+    "randomizeResultsOrder": true
 }

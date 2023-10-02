@@ -57,7 +57,9 @@ function parseData(data, radius) {
         });
     });
 
-    parsedData.restaurants = shuffle(parsedData.restaurants);
+    if (CONFIG.randomizeResultsOrder) {
+        parsedData.restaurants = shuffle(parsedData.restaurants);
+    }
     return parsedData;
 }
 
