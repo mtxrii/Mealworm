@@ -23,8 +23,8 @@ This monorepo contains both the client and server. Clone it locally to get start
    1. Obtain required API keys (instructions in the [file](https://github.com/mtxrii/Mealworm/blob/main/backend/Mealworm/src/keys.spec.js))
       1. One of these keys is created by you and can be any password you want. It is used to ensure only your copy of the frontend accesses your copy of the backend (and uses your API keys)
    3. Rename file to `keys.js`
-5. Open file named [`index.js`](https://github.com/mtxrii/Mealworm/blob/fe509ce72fe6557551c51b8410d1f4d3609e8e48/backend/Mealworm/src/index.js#L9)
-   1. Change `const port = 3030` to whatever you'd like, or leave it as 3030.
+5. Open file named `config.json`
+   1. Change the value of `appPort` to whatever you'd like, or leave it as 3030.
 6. Run `node src/index.js` to start the backend server.
 
 ### 7. Setup Frontend
