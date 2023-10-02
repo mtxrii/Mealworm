@@ -5,27 +5,21 @@ import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwit
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
 import SearchButton from './components/searchButton/SearchButton';
 import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
+import CATCHPHRASES from './metadata/catchphrases.json';
+import CONFIG from './app-config.json';
 import './App.css';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#007c72'
+      main: CONFIG.buttonColor
     },
   },
 });
 
-const APP_CATCHPHRASES = [
-  "Find somewhere new to eat",
-  "Find random cool restaurants near you",
-  "Get some new food suggestions",
-  "Check out some new restaurants",
-  "Discover new food near you",
-  "See the best restaurants around"
-]
-
 function getRandomCatchphrase() {
-  return APP_CATCHPHRASES[Math.floor((Math.random()*APP_CATCHPHRASES.length))];
+  const phrases = CATCHPHRASES.appLandingScreenCatchphrases;
+  return phrases[Math.floor((Math.random() * phrases.length))];
 }
 
 function App() {

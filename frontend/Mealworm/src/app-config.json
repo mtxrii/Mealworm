@@ -1,0 +1,11 @@
+{
+    "backendUrl": "192.168.0.65",
+    "backendPort": 3030,
+    "buttonColor": "#007c72",
+    "debugMode": true,
+    "searchFilterDefaults": {
+        "locationDefault": "Mountain View, CA",
+        "distanceDefault": "3",
+        "cuisineDefault": "Any"
+    }
+}

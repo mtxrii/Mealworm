@@ -1,29 +1,21 @@
 import { backendApiKey } from "./keys.js";
 import axios from 'axios';
+import CONFIG from '../app-config.json';
 
 export const DEFAULT_KEYWORD = 'default_value';
 export const ERROR_KEYWORD = 'API_ERR';
 
-const debugMode = true;
-
-const backendPort = '3030';
-const backendUrl = 'http://192.168.0.65:' + backendPort + '/'
-
-const defaults = {
-    locationDefault: "Mountain View, CA",
-    distanceDefault: "3",
-    cuisineDefault: "Any"
-}
+const backendUrl = 'http://' + CONFIG.backendUrl + ':' + CONFIG.backendPort + '/';
 
 export async function getRestaurants(isGoogle, location, distance, cuisine) {
     if (location === DEFAULT_KEYWORD) {
-        location = defaults.locationDefault;
+        location = CONFIG.searchFilterDefaults.locationDefault;
     }
     if (distance === DEFAULT_KEYWORD) {
-        distance = defaults.distanceDefault;
+        distance = CONFIG.searchFilterDefaults.distanceDefault;
     }
     if (cuisine === DEFAULT_KEYWORD) {
-        cuisine = defaults.cuisineDefault;
+        cuisine = CONFIG.searchFilterDefaults.cuisineDefault;
     }
 
     let result;
@@ -50,12 +42,12 @@ async function getYelpResults(location, distance, cuisine) {
                 'Access-Control-Allow-Origin': '*'
             }
         });
-        if (debugMode) {
+        if (CONFIG.debugMode) {
             console.log(response.data);
         }
         return response.data;
     } catch(error) {
-        if (debugMode) {
+        if (CONFIG.debugMode) {
             console.log(URL);
             console.log(error);
         }
@@ -77,12 +69,12 @@ async function getGoogleResults(location, distance) {
                 'Access-Control-Allow-Origin': '*'
             }
         });
-        if (debugMode) {
+        if (CONFIG.debugMode) {
             console.log(response.data);
         }
         return response.data;
     } catch(error) {
-        if (debugMode) {
+        if (CONFIG.debugMode) {
             console.log(URL);
             console.log(error);
         }

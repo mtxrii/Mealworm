@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import Tooltip from '@mui/material/Tooltip';
+import CONFIG from '../../app-config.json';
 import './SearchEngineSwitch.css';
 
 // Source: https://mui.com/material-ui/react-switch/#customization
@@ -28,7 +29,7 @@ const MaterialUISwitch = styled(Switch)((props) => ({
     },
   },
   '& .MuiSwitch-thumb': {
-    backgroundColor: '#007c72',
+    backgroundColor: CONFIG.buttonColor,
     width: 32,
     height: 32,
     '&:before': {
