@@ -5,9 +5,9 @@ const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./fetchRequ
 const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./fetchRequest/google');
 const { hasAllParams } = require('./util');
 const { logRequest, logMissingParams, logInvalidKey, logServerIssue } = require('./logger');
+const CONFIG = require('../config.json');
 
 const app = express();
-const port = 3030;
 
 const DEFAULT_ERR_RESPONSE_BODY = {
     status: "error",
@@ -113,6 +113,6 @@ app.get('/', async (req, res) => {
     res.status(200).json(response).end();
 });
 
-app.listen(port, () => {
-    console.log('Server listening at http://localhost:' + port);
+app.listen(CONFIG.appPort, () => {
+    console.log('Server listening at http://localhost:' + CONFIG.appPort);
 })
