@@ -13,7 +13,7 @@ function buildSearch(location, distance, cuisine) {
                  '&radius=' + (distance * 1610); // In meters
 
     if (cuisine != null) {
-        search += '&categories=' + cuisine;
+        search += '&categories=' + cuisine.toLowerCase();
     }
     return 'https://api.yelp.com/v3/businesses/search' + search;
 }
