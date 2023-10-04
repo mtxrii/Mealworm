@@ -18,8 +18,8 @@ const theme = createTheme({
   palette: {
     primary: {
       main: CONFIG.buttonColor
-    },
-  },
+    }
+  }
 });
 
 function getRandomCatchphrase() {
@@ -91,15 +91,31 @@ function App() {
     );
   };
 
+  const loadLoadingPage = () => {
+    return (
+      <div>
+        <ThemeProvider theme={theme}>
+          <div style={{
+            marginLeft: "10px",
+            paddingBottom: "10px",
+            paddingTop: "10px"
+          }}>
+            Loading Results...
+          </div>
+          <Loader />
+        </ThemeProvider>
+      </div>
+    )
+  }
+
   return (
     <div className="App">
       {/* {showResultsPage ? 
         loadResultsPage()
         :
         loadSearchPage() */
-
+        loadLoadingPage()
       }
-      <Loader />
     </div>
   );
 }
