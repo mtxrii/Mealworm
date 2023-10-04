@@ -13,7 +13,17 @@ export default function SearchInputFields(props) {
                 />
             </div>
             <div className="SIF-filters-row">
-                <TextField label="Distance (mi)" variant="filled" fullWidth type="number"  onChange={
+                <TextField
+                    label="Distance (mi)"
+                    variant="filled"
+                    fullWidth
+                    type="number" 
+                    InputProps={{
+                        inputProps: { 
+                            max: 20, min: 1
+                        }
+                    }}
+                    onChange={
                         (event) => props.updateDistance(event.target.value)
                     }
                 />
