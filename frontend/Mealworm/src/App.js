@@ -29,7 +29,6 @@ function getRandomCatchphrase() {
 }
 
 function App() {
-  const [showResultsPage, hasResults] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState(PAGES.search);
   
   const [catchphrase] = React.useState(getRandomCatchphrase());
@@ -45,13 +44,25 @@ function App() {
     setCurrentPage(PAGES.loading);
 
     const response = await getRestaurants(isUsingGoogle, location, distance, cuisine);
+
     if (response === ERROR_KEYWORD) {
       setCurrentPage(PAGES.error);
     } else {
       saveData(response);
+      setCurrentPage(PAGES.results);
+    }
+  };
 
-      setCurrentPage(PAGES.results)
-      hasResults(true);
+  const loadPage = () => {
+    switch (currentPage) {
+      case PAGES.search:
+        return loadSearchPage();
+      case PAGES.loading:
+        return loadLoadingPage();
+      case PAGES.results:
+        return loadResultsPage();
+      case PAGES.error:
+        return loadErrorPage();
     }
   };
 
@@ -127,12 +138,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* {showResultsPage ? 
-        loadResultsPage()
-        :
-        loadSearchPage() */
-        loadErrorPage()
-      }
+      {loadPage()}
     </div>
   );
 }
