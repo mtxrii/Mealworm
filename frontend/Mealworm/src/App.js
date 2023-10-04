@@ -1,6 +1,7 @@
 // Libraries
 import * as React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import FmdBadIcon from '@mui/icons-material/FmdBad';
 // Components
 import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
@@ -108,13 +109,29 @@ function App() {
     )
   }
 
+  const loadErrorPage = () => {
+    return (
+      <div>
+      <ThemeProvider theme={theme}>
+        <div style={{
+          paddingBottom: "10px",
+          paddingTop: "10px"
+        }}>
+          Error with backend server
+        </div>
+        <FmdBadIcon fontSize='large' />
+      </ThemeProvider>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       {/* {showResultsPage ? 
         loadResultsPage()
         :
         loadSearchPage() */
-        loadLoadingPage()
+        loadErrorPage()
       }
     </div>
   );
