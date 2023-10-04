@@ -1,10 +1,13 @@
+// Libraries
 import * as React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+// Components
 import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
 import SearchButton from './components/searchButton/SearchButton';
 import Loader from './components/loadingAnimation/Loader';
+// Other files
 import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
 import CATCHPHRASES from './metadata/catchphrases.json';
 import PAGES from './metadata/pagesEnum.json';
