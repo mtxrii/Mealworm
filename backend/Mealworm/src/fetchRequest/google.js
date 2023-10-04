@@ -1,6 +1,6 @@
 const axios = require('axios');
 const keys = require('../keys.js');
-const { shuffle } = require('../util.js');
+const { shuffle, addIdxToList } = require('../util.js');
 const CONFIG = require('../../config.json');
 
 const ERR_MSG = 'GOOGLE_ERROR';
@@ -75,6 +75,7 @@ function parseData(data, radius) {
     if (CONFIG.randomizeResultsOrder) {
         parsedData.restaurants = shuffle(parsedData.restaurants);
     }
+    addIdxToList(parsedData.restaurants);
     return parsedData;
 }
 

@@ -25,5 +25,14 @@ function hasAllParams(req) {
   return hasKey && hasLoc && hasDis && disIsInt;
 }
 
+function addIdxToList(list) {
+  let newIndex = 0;
+  for (let i = 0; i < list.length; i++) {
+    list[i].idx = newIndex;
+    newIndex ++;
+  }
+}
+
 exports.shuffle = shuffle;
 exports.hasAllParams = hasAllParams;
+exports.addIdxToList = addIdxToList;
