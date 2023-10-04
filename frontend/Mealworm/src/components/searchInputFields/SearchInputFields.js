@@ -19,7 +19,14 @@ export default function SearchInputFields(props) {
                     }
                 />
             </div>
-            <div className="SIF-filters-row">
+            <div
+                className="SIF-filters-row"
+                style={
+                    validDistance ?
+                    {} :
+                    {marginBottom: "-23px"}
+                }
+            >
                 <TextField
                     label="Distance (mi)"
                     variant="filled"
