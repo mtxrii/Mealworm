@@ -50,37 +50,49 @@ function App() {
     }
   };
 
+  const loadResultsPage = () => {
+    return (
+      <div>
+        Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
+        <br/>
+        {data.data.restaurants.map((restaurant) =>
+          <li key={restaurant.name}>{restaurant.name}</li>
+        )}
+      </div>
+    );
+  };
+
+  const loadSearchPage = () => {
+    return (
+      <div>
+        <header className="App-header">
+          <LandingLogo catchphrase={catchphrase} />
+        </header>
+        <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle} />
+        <ThemeProvider theme={theme}>
+          <SearchInputFields
+            isUsingGoogle={isGoogle}
+            updateLocation={setLocation}
+            updateDistance={setDistance}
+            updateCuisine={setCuisine}
+          />
+          <SearchButton onClick={doSearch} data={{
+            location: location,
+            distance: distance,
+            isUsingGoogle: isGoogle,
+            cuisine: cuisine
+          }} />
+        </ThemeProvider>
+      </div>
+    );
+  };
+
   return (
     <div className="App">
       {showResultsPage ? 
-        <div>
-          Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
-          <br/>
-          {data.data.restaurants.map((restaurant) =>
-            <li key={restaurant.name}>{restaurant.name}</li>
-          )}
-        </div>
+        loadResultsPage()
         :
-        <div>
-          <header className="App-header">
-            <LandingLogo catchphrase={catchphrase} />
-          </header>
-          <SearchEngineSwitch checked={isGoogle} setChecked={setIsGoogle} />
-          <ThemeProvider theme={theme}>
-            <SearchInputFields
-              isUsingGoogle={isGoogle}
-              updateLocation={setLocation}
-              updateDistance={setDistance}
-              updateCuisine={setCuisine}
-            />
-            <SearchButton onClick={doSearch} data={{
-              location: location,
-              distance: distance,
-              isUsingGoogle: isGoogle,
-              cuisine: cuisine
-            }} />
-          </ThemeProvider>
-        </div>
+        loadSearchPage()
       }
     </div>
   );
