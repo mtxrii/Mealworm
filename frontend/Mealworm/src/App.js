@@ -4,6 +4,7 @@ import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
 import SearchButton from './components/searchButton/SearchButton';
+import Loader from './components/loadingAnimation/Loader';
 import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
 import CATCHPHRASES from './metadata/catchphrases.json';
 import PAGES from './metadata/pagesEnum.json';
@@ -89,11 +90,13 @@ function App() {
 
   return (
     <div className="App">
-      {showResultsPage ? 
+      {/* {showResultsPage ? 
         loadResultsPage()
         :
-        loadSearchPage()
+        loadSearchPage() */
+
       }
+      <Loader />
     </div>
   );
 }
