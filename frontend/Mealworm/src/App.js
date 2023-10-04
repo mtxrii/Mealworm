@@ -6,6 +6,7 @@ import SearchInputFields from './components/searchInputFields/SearchInputFields'
 import SearchButton from './components/searchButton/SearchButton';
 import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
 import CATCHPHRASES from './metadata/catchphrases.json';
+import PAGES from './metadata/pagesEnum.json';
 import CONFIG from './app-config.json';
 import './App.css';
 
@@ -24,6 +25,7 @@ function getRandomCatchphrase() {
 
 function App() {
   const [showResultsPage, hasResults] = React.useState(false);
+  const [currentPage, setCurrentPage] = React.useState(PAGES.search);
   
   const [catchphrase] = React.useState(getRandomCatchphrase());
 
@@ -35,10 +37,17 @@ function App() {
   const [data,  saveData]  = React.useState(null);
 
   const doSearch = async (location, distance, isUsingGoogle, cuisine) => {
-    const response = await getRestaurants(isUsingGoogle, location, distance, cuisine);
-    saveData(response);
+    setCurrentPage(PAGES.loading);
 
-    hasResults(true);
+    const response = await getRestaurants(isUsingGoogle, location, distance, cuisine);
+    if (response === ERROR_KEYWORD) {
+      setCurrentPage(PAGES.error);
+    } else {
+      saveData(response);
+
+      setCurrentPage(PAGES.results)
+      hasResults(true);
+    }
   };
 
   return (
