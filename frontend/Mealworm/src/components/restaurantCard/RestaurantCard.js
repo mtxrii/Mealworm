@@ -5,12 +5,14 @@ import Typography from '@mui/material/Typography';
 import defaultRestaurantImage from '../../assets/zakaria-zayane-0uAVsDcyD0M-unsplash.jpg'
 
 export default function RestaurantCard(props) {
+    const noImg = props.img === null;
+
     return (
         <Card sx={{ maxWidth: 345 }} style={{ margin: '12px' }}>
             <CardMedia
             sx={{ height: 140 }}
-            image={defaultRestaurantImage}
-            title={props.name}
+            image={noImg ? defaultRestaurantImage : props.img}
+            title={noImg ? "No image provided" : "Image of " + props.name}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
