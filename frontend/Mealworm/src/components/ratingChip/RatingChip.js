@@ -26,15 +26,50 @@ export default function RatingChip(props) {
         let dollarSigns = [];
         for (let i = 0; i < rating; i++) {
             dollarSigns.push(
-                <DollarSignIcon />
+                <DollarSignIcon key={i}/>
             )
         }
         return dollarSigns;
     }
 
+    const buildStarRating = (rating) => {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = fullStars !== rating && rating !== 5;
+        const emptyStars = 5 - (fullStars + (hasHalfStar ? 1 : 0));
+
+        let stars = [];
+        let keyIdx = 0;
+        for (let i = 0; i < fullStars; i++) {
+            stars.push(
+                <FullStarIcon key={keyIdx} />
+            )
+            keyIdx ++;
+        }
+        if (hasHalfStar) {
+            stars.push(
+                <HalfStarIcon key={keyIdx} />
+            )
+            keyIdx ++;
+        }
+        for (let j = 0; j < emptyStars; j++) {
+            stars.push(
+                <EmptyStarIcon key={keyIdx}/>
+            )
+            keyIdx ++;
+        }
+        return stars;
+    }
+
     return (
         <ThemeProvider theme={theme}>
-            <Chip label={buildPriceRating(props.rating)} variant="outlined" color="primary"/>
+            <Chip
+            label={
+                props.priceRating ?
+                buildPriceRating(props.rating) :
+                buildStarRating(props.rating)
+            }
+            variant="outlined"
+            color="primary"/>
         </ThemeProvider>
     )
 }

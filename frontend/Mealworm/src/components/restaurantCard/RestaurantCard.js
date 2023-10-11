@@ -30,9 +30,9 @@ export default function RestaurantCard(props) {
                 style={{ marginTop: "10px" }}
                 >
                     <Grid item xs={6} align="left">
-                        <RatingChip rating={3} />
+                        <RatingChip priceRating rating={4} />
                         <div style={{ margin: "5px" }}/>
-                        <RatingChip priceRating rating={0} />
+                        <RatingChip rating={4.5} />
                     </Grid>
                     <Grid item xs={6}>
                         <Typography variant="body1" color={CONFIG.buttonColor} align="left">
