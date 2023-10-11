@@ -8,6 +8,7 @@ import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwit
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
 import SearchButton from './components/searchButton/SearchButton';
 import Loader from './components/loadingAnimation/Loader';
+import RestaurantCard from './components/restaurantCard/RestaurantCard';
 // Other files
 import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
 import CATCHPHRASES from './metadata/catchphrases.json';
@@ -72,7 +73,9 @@ function App() {
         Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
         <br/>
         {data.data.restaurants.map((restaurant) =>
-          <li key={restaurant.idx}>{restaurant.idx + ". " + restaurant.name}</li>
+          <li key={restaurant.idx}>
+            <RestaurantCard idx={restaurant.idx} name={restaurant.name} />
+          </li>
         )}
       </div>
     );
