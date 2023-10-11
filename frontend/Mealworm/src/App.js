@@ -88,7 +88,8 @@ function App() {
             img={restaurant.imageUrl}
             address={restaurant.address}
             priceRating={restaurant.price}
-            starRating={restaurant.rating} />
+            starRating={restaurant.rating}
+            isUsingGoogle={data.data.provider == "Google"} />
           </Grid>
         )}
       </Grid>

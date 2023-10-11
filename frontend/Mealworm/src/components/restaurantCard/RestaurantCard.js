@@ -41,7 +41,7 @@ export default function RestaurantCard(props) {
                     <Grid item xs={6} align="left">
                         <RatingChip priceRating rating={props.priceRating} />
                         <div style={{ margin: "5px" }}/>
-                        <RatingChip rating={props.starRating} />
+                        <RatingChip rating={props.starRating} showFullRating={props.isUsingGoogle}/>
                     </Grid>
                     <Grid item xs={6}>
                         <Typography variant="body1" color={CONFIG.buttonColor} align="left">

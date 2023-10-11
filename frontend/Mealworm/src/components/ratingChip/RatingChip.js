@@ -69,7 +69,15 @@ export default function RatingChip(props) {
                 buildStarRating(props.rating)
             }
             variant="outlined"
-            color="primary"/>
+            color="primary"
+            />
+            {
+                props.showFullRating ?
+                <div style={{ color: CONFIG.buttonColor }}>
+                    {"(" + props.rating + " Stars)"}
+                </div> :
+                ""
+            }
         </ThemeProvider>
     )
 }
