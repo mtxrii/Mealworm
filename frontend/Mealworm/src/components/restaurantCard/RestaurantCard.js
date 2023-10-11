@@ -14,12 +14,11 @@ export default function RestaurantCard(props) {
 
     let streetAddr = "";
     let cityState = "";
-    if (props.address.length === 2) {
+    if (props.address != null && props.address.length >= 2) {
+        streetAddr = props.address.slice(0, props.address.length - 1).join(" ");
+        cityState = props.address[props.address.length - 1];
+    } else if (props.address != null && props.address.length == 1) {
         streetAddr = props.address[0];
-        cityState = props.address[1];
-    } else if (props.address.length === 3) {
-        streetAddr = props.address[0] + " " + props.address[1];
-        cityState = props.address[2];
     }
 
     return (
