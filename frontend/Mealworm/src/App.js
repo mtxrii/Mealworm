@@ -73,9 +73,9 @@ function App() {
         Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
         <br/>
         {data.data.restaurants.map((restaurant) =>
-          <li key={restaurant.idx}>
+          <div key={restaurant.idx}>
             <RestaurantCard idx={restaurant.idx} name={restaurant.name} />
-          </li>
+          </div>
         )}
       </div>
     );
