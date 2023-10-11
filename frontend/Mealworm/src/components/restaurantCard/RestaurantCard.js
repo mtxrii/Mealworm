@@ -8,7 +8,7 @@ export default function RestaurantCard(props) {
     const noImg = props.img === null;
 
     return (
-        <Card sx={{ maxWidth: 345 }} style={{ margin: '12px' }}>
+        <Card sx={{ width: 345 }} style={{ margin: '12px' }}>
             <CardMedia
             sx={{ height: 140 }}
             image={noImg ? defaultRestaurantImage : props.img}
@@ -18,9 +18,10 @@ export default function RestaurantCard(props) {
                 <Typography gutterBottom variant="h5" component="div">
                     {props.idx + ". " + props.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
+                <Typography variant="body2" color="text.secondary" align="left">
+                    123 Sample St
+                    <br/>
+                    San Jose, CA 95113
                 </Typography>
             </CardContent>
         </Card>
