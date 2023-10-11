@@ -5,9 +5,6 @@ import Typography from '@mui/material/Typography';
 
 export default function RestaurantCard(props) {
     return (
-        // <div>
-        //     {props.idx + ". " + props.name}
-        // </div>
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
             sx={{ height: 140 }}
@@ -16,7 +13,7 @@ export default function RestaurantCard(props) {
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    Lizard
+                    {props.idx + ". " + props.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     Lizards are a widespread group of squamate reptiles, with over 6,000
