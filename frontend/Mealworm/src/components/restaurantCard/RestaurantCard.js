@@ -3,9 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import Chip from '@mui/material/Chip';
-import StarIcon from '@mui/icons-material/Star';
 import { Grid } from '@mui/material';
+import RatingChip from '../ratingChip/RatingChip';
 // Other files
 import defaultRestaurantImage from '../../assets/zakaria-zayane-0uAVsDcyD0M-unsplash.jpg';
 import CONFIG from '../../app-config.json';
@@ -31,9 +30,9 @@ export default function RestaurantCard(props) {
                 style={{ marginTop: "10px" }}
                 >
                     <Grid item xs={6} align="left">
-                        <Chip label="$ $ $ $" variant="outlined" />
+                        <RatingChip rating={3} />
                         <div style={{ margin: "5px" }}/>
-                        <Chip label={<StarIcon />} variant="outlined" />
+                        <RatingChip priceRating rating={0} />
                     </Grid>
                     <Grid item xs={6}>
                         <Typography variant="body1" color={CONFIG.buttonColor} align="left">
