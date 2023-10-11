@@ -30,7 +30,7 @@ export default function RestaurantCard(props) {
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {props.idx + ". " + props.name}
+                    {props.name}
                 </Typography>
 
                 <Grid
