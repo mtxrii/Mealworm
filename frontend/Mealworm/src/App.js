@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import FmdBadIcon from '@mui/icons-material/FmdBad';
+import { Grid } from '@mui/material';
 // Components
 import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
@@ -69,15 +70,22 @@ function App() {
 
   const loadResultsPage = () => {
     return (
-      <div>
+      <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '100vh' }}
+      >
         Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
         <br/>
         {data.data.restaurants.map((restaurant) =>
-          <div key={restaurant.idx}>
+          <Grid item xs={3} key={restaurant.idx}>
             <RestaurantCard idx={restaurant.idx} name={restaurant.name} />
-          </div>
+          </Grid>
         )}
-      </div>
+      </Grid>
     );
   };
 
