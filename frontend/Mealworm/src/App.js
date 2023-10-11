@@ -82,7 +82,7 @@ function App() {
         <br/>
         {data.data.restaurants.map((restaurant) =>
           <Grid item xs={3} key={restaurant.idx}>
-            <RestaurantCard idx={restaurant.idx} name={restaurant.name} img={restaurant.imageUrl} />
+            <RestaurantCard idx={restaurant.idx} name={restaurant.name} img={restaurant.imageUrl} address={restaurant.address} />
           </Grid>
         )}
       </Grid>
