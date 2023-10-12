@@ -10,6 +10,7 @@ import SearchInputFields from './components/searchInputFields/SearchInputFields'
 import SearchButton from './components/searchButton/SearchButton';
 import Loader from './components/loadingAnimation/Loader';
 import RestaurantCard from './components/restaurantCard/RestaurantCard';
+import FiltersSelectionBar from './components/filtersSelectionBar/FiltersSelectionBar';
 // Other files
 import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
 import CATCHPHRASES from './metadata/catchphrases.json';
@@ -78,7 +79,11 @@ function App() {
       justify="center"
       style={{ minHeight: '100vh' }}
       >
-        Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
+        <FiltersSelectionBar
+        location={location}
+        distance={distance}
+        cuisine={cuisine}
+        isUsingGoogle={isGoogle} />
         <br/>
         {data.data.restaurants.map((restaurant) =>
           <Grid item xs={3} key={restaurant.idx}>
@@ -89,7 +94,7 @@ function App() {
             address={restaurant.address}
             priceRating={restaurant.price}
             starRating={restaurant.rating}
-            isUsingGoogle={data.data.provider == "Google"} />
+            isUsingGoogle={isGoogle} />
           </Grid>
         )}
       </Grid>
