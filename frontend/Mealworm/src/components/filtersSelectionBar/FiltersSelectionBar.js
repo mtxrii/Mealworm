@@ -15,9 +15,9 @@ const theme = createTheme({
 });
 
 export default function FiltersSelectionBar(props) {
-  const location = props.location == DEFAULT_KEYWORD ? CONFIG.searchFilterDefaults.locationDefault : props.location;
-  const distance = props.distance == DEFAULT_KEYWORD ? CONFIG.searchFilterDefaults.distanceDefault : props.distance;
-  const cuisine  = props.cuisine  == DEFAULT_KEYWORD ? CONFIG.searchFilterDefaults.cuisineDefault  : props.cuisine;
+  const location = props.location === DEFAULT_KEYWORD ? CONFIG.searchFilterDefaults.locationDefault : props.location;
+  const distance = props.distance === DEFAULT_KEYWORD ? CONFIG.searchFilterDefaults.distanceDefault : props.distance;
+  const cuisine  = props.cuisine  === DEFAULT_KEYWORD ? CONFIG.searchFilterDefaults.cuisineDefault  : props.cuisine;
   return (
     <Box sx={{ flexGrow: 1 }}>
       <ThemeProvider theme={theme}>
