@@ -2,7 +2,7 @@
     "backendUrl": "192.168.0.65",
     "backendPort": 3030,
     "buttonColor": "#007c72",
-    "footerColor": "rgba(89, 65, 79, 0.7)",
+    "footerColor": "rgba(0, 0, 0, 0.6)",
     "debugMode": true,
     "searchFilterDefaults": {
         "locationDefault": "Mountain View, CA",
