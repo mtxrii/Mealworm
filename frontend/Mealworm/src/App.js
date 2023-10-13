@@ -2,12 +2,15 @@
 import * as React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import FmdBadIcon from '@mui/icons-material/FmdBad';
+import { Grid } from '@mui/material';
 // Components
 import LandingLogo from './components/landingLogo/LandingLogo';
 import SearchEngineSwitch from './components/searchEngineSwitch/SearchEngineSwitch';
 import SearchInputFields from './components/searchInputFields/SearchInputFields';
 import SearchButton from './components/searchButton/SearchButton';
 import Loader from './components/loadingAnimation/Loader';
+import RestaurantCard from './components/restaurantCard/RestaurantCard';
+import FiltersSelectionBar from './components/filtersSelectionBar/FiltersSelectionBar';
 // Other files
 import { getRestaurants, DEFAULT_KEYWORD, ERROR_KEYWORD } from './fetchRequest/dataGather';
 import CATCHPHRASES from './metadata/catchphrases.json';
@@ -69,18 +72,40 @@ function App() {
         return loadResultsPage();
       case PAGES.error:
         return loadErrorPage();
+      default:
+        return null;
     }
   };
 
   const loadResultsPage = () => {
     return (
-      <div>
-        Results for location: '{location}' distance: '{distance}' usingGoogle: '{isGoogle + ''}' cuisine: '{cuisine}'
+      <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '100vh' }}
+      >
+        <FiltersSelectionBar
+        location={location}
+        distance={distance}
+        cuisine={cuisine}
+        isUsingGoogle={isGoogle} />
         <br/>
         {data.data.restaurants.map((restaurant) =>
-          <li key={restaurant.idx}>{restaurant.idx + ". " + restaurant.name}</li>
+          <Grid item xs={3} key={restaurant.idx}>
+            <RestaurantCard
+            idx={restaurant.idx}
+            name={restaurant.name}
+            img={restaurant.imageUrl}
+            address={restaurant.address}
+            priceRating={restaurant.price}
+            starRating={restaurant.rating}
+            isUsingGoogle={isGoogle} />
+          </Grid>
         )}
-      </div>
+      </Grid>
     );
   };
 

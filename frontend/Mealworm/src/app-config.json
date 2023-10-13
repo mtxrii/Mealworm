@@ -2,6 +2,7 @@
     "backendUrl": "192.168.0.65",
     "backendPort": 3030,
     "buttonColor": "#007c72",
+    "filterSelectionBarColor": "#272d33",
     "footerColor": {
         "color": "rgb(0, 0, 0)",
         "bodyOpacity": "0.6",
