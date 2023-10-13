@@ -13,7 +13,7 @@ import CONFIG from '../../app-config.json';
 const theme = createTheme({
   palette: {
       primary: {
-          main: CONFIG.footerColor
+          main: CONFIG.filterSelectionBarColor
       }
   }
 });

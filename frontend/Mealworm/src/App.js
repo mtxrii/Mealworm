@@ -31,6 +31,12 @@ function getRandomCatchphrase() {
   return phrases[Math.floor((Math.random() * phrases.length))];
 }
 
+function generateColor(rgbColor, opacity) {
+  let color = rgbColor.replace("rgb", "rgba");
+  color = color.replace(")", ", " + opacity + ")");
+  return color;
+}
+
 function App() {
   const [currentPage, setCurrentPage] = React.useState(PAGES.search);
   
@@ -162,9 +168,15 @@ function App() {
   }
 
   return (
-    <div className="App">
-      {loadPage()}
-    </div>
+    <main>
+      <div className="App">
+        {loadPage()}
+      </div>
+      <div className="App-footer" style={{ backgroundColor: generateColor(CONFIG.footerColor.color, CONFIG.footerColor.bodyOpacity) }}>
+        <div className="App-footer-top" style={{ backgroundColor: generateColor(CONFIG.footerColor.color, CONFIG.footerColor.borderOpacity) }} />
+        <a href={CONFIG.githubLink}>© Mtxrii</a> | <a href={CONFIG.githubLink + "/Mealworm"}>Source</a>
+      </div>
+    </main>
   );
 }
 

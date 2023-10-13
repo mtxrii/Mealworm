@@ -2,11 +2,17 @@
     "backendUrl": "192.168.0.65",
     "backendPort": 3030,
     "buttonColor": "#007c72",
-    "footerColor": "#272d33",
+    "filterSelectionBarColor": "#272d33",
+    "footerColor": {
+        "color": "rgb(0, 0, 0)",
+        "bodyOpacity": "0.6",
+        "borderOpacity": "1.0"
+    },
     "debugMode": true,
     "searchFilterDefaults": {
         "locationDefault": "Mountain View, CA",
         "distanceDefault": "3",
         "cuisineDefault": "Any"
-    }
+    },
+    "githubLink": "https://github.com/mtxrii"
 }
