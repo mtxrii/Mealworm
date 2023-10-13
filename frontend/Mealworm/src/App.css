@@ -31,6 +31,12 @@
   color: white;
 }
 
+.App-footer-top {
+  height: 3px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
 .App-footer {
   height: 30px;
   width: 100%;
@@ -39,8 +45,17 @@
   justify-content: center;
 }
 
-.App-footer-top {
-  height: 3px;
-  width: 100%;
-  margin-bottom: 4px;
+.App-footer a:link {
+  color: white;
+  text-decoration: none;
+}
+
+.App-footer a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.App-footer a:hover {
+  color: #81d6cf;
+  text-decoration: none;
 }
