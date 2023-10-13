@@ -31,7 +31,11 @@ export default function FiltersSelectionBar(props) {
               <PlaceIcon style={{marginBottom: "-5px"}} /> {location}
               <DirectionsIcon style={{marginBottom: "-5px", marginLeft: "10px"}} /> {distance} mi
               <TravelExploreIcon style={{marginBottom: "-5px", marginLeft: "10px"}} /> {props.isUsingGoogle ? "Google" : "Yelp"}
-              <FastfoodIcon style={{marginBottom: "-5px", marginLeft: "10px"}} /> {cuisine}
+              {props.isUsingGoogle ? "" :
+              <span>
+                <FastfoodIcon style={{marginBottom: "-5px", marginLeft: "10px"}} /> {cuisine}
+              </span>
+              }
             </Typography>
           </Toolbar>
         </AppBar>
