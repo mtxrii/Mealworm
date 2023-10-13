@@ -149,7 +149,7 @@ function App() {
       </div>
       <div className="App-footer" style={{ backgroundColor: generateColor(CONFIG.footerColor.color, CONFIG.footerColor.bodyOpacity) }}>
         <div className="App-footer-top" style={{ backgroundColor: generateColor(CONFIG.footerColor.color, CONFIG.footerColor.borderOpacity) }} />
-        Temp Footer | Link 1 | Link 2
+        <a href="https://github.com/mtxrii">© Mtxrii</a> | <a href="">About</a> | <a href="https://github.com/mtxrii/Mealworm">Source</a>
       </div>
     </main>
   );
