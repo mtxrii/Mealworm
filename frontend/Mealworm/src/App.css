@@ -34,7 +34,14 @@
 .App-footer {
   height: 30px;
   width: 100%;
+  color: white;
   text-align: center;
   justify-content: center;
-  padding-top: 10px;
+}
+
+.App-footer-top {
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  margin-bottom: 4px;
 }

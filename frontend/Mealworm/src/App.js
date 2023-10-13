@@ -142,6 +142,7 @@ function App() {
         {loadPage()}
       </div>
       <div className="App-footer" style={{ backgroundColor: CONFIG.footerColor }}>
+        <div className="App-footer-top" />
         Temp Footer | Link 1 | Link 2
       </div>
     </main>
