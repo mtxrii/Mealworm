@@ -4,6 +4,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { DEFAULT_KEYWORD } from '../../fetchRequest/dataGather';
+import PlaceIcon from '@mui/icons-material/Place';
+import DirectionsIcon from '@mui/icons-material/Directions';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
 import CONFIG from '../../app-config.json';
 
 const theme = createTheme({
@@ -24,7 +28,10 @@ export default function FiltersSelectionBar(props) {
         <AppBar position="static" color="primary">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              pinIcon: '{location}' distanceIcon: '{distance} mi' searchIcon: '{props.isUsingGoogle ? "Google" : "Yelp"}' cuisineIcon: '{cuisine}'
+              <PlaceIcon style={{marginBottom: "-5px"}} /> {location}
+              <DirectionsIcon style={{marginBottom: "-5px", marginLeft: "10px"}} /> {distance} mi
+              <TravelExploreIcon style={{marginBottom: "-5px", marginLeft: "10px"}} /> {props.isUsingGoogle ? "Google" : "Yelp"}
+              <FastfoodIcon style={{marginBottom: "-5px", marginLeft: "10px"}} /> {cuisine}
             </Typography>
           </Toolbar>
         </AppBar>
