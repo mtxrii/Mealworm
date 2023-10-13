@@ -17,6 +17,7 @@
     #9bfff9
   );
   padding-bottom: 70px;
+  min-height: 90vh;
 }
 
 .App-header {
