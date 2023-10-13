@@ -137,9 +137,14 @@ function App() {
   }
 
   return (
-    <div className="App">
-      {loadPage()}
-    </div>
+    <main>
+      <div className="App">
+        {loadPage()}
+      </div>
+      <div className="App-footer" style={{ backgroundColor: CONFIG.footerColor }}>
+        Temp Footer | Link 1 | Link 2
+      </div>
+    </main>
   );
 }
 
