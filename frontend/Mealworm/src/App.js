@@ -28,6 +28,12 @@ function getRandomCatchphrase() {
   return phrases[Math.floor((Math.random() * phrases.length))];
 }
 
+function generateColor(rgbColor, opacity) {
+  let color = rgbColor.replace("rgb", "rgba");
+  color = color.replace(")", ", " + opacity + ")");
+  return color;
+}
+
 function App() {
   const [currentPage, setCurrentPage] = React.useState(PAGES.search);
   
@@ -141,8 +147,8 @@ function App() {
       <div className="App">
         {loadPage()}
       </div>
-      <div className="App-footer" style={{ backgroundColor: CONFIG.footerColor }}>
-        <div className="App-footer-top" />
+      <div className="App-footer" style={{ backgroundColor: generateColor(CONFIG.footerColor.color, CONFIG.footerColor.bodyOpacity) }}>
+        <div className="App-footer-top" style={{ backgroundColor: generateColor(CONFIG.footerColor.color, CONFIG.footerColor.borderOpacity) }} />
         Temp Footer | Link 1 | Link 2
       </div>
     </main>
