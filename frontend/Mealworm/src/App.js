@@ -66,6 +66,8 @@ function App() {
         return loadResultsPage();
       case PAGES.error:
         return loadErrorPage();
+      default:
+        return null;
     }
   };
 
