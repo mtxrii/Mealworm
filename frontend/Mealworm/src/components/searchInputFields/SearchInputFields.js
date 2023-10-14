@@ -53,7 +53,7 @@ export default function SearchInputFields(props) {
                     <div className="SIF-filters-padding" />
                 }
                 {props.isUsingGoogle ? null :
-                    <TextField label="Cuisine" variant="filled" fullWidth select className="SIF-cuisine" onChange={
+                    <TextField label="Cuisine" variant="filled" fullWidth select className="SIF-cuisine" defaultValue="" onChange={
                             (event) => props.updateCuisine(event.target.value)
                         }
                     >
