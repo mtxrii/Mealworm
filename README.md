@@ -33,6 +33,7 @@ This monorepo contains both the client and server. Clone it locally to get start
 10. Copy file named `keys.spec.js` (inside `/src/fetchRequest` dir)
     1. Replace the default value for [`backendApiKey`](https://github.com/mtxrii/Mealworm/blob/11c6816bc233cdd3cfacac9e8b5e564a9ba9a1a7/frontend/Mealworm/src/fetchRequest/keys.spec.js#L9) with the key you created in step 4.i.a
     2. Rename file to `keys.js`
+       1. Alternatively you can add the value for `backendApiKey` as an env var named `REACT_APP_BACKEND_KEY`.
 11. Open file named `app-config.json` (inside `/src` dir) and change the value of `backendPort` to whatever you set it to in step 5.i
 11. Run `npm start` to start the frontend app.
 12. Navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser
