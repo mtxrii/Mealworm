@@ -1,9 +1,16 @@
-import { backendApiKey } from "./keys.js";
 import axios from 'axios';
 import CONFIG from '../app-config.json';
 
 export const DEFAULT_KEYWORD = 'default_value';
 export const ERROR_KEYWORD = 'API_ERR';
+
+let backendApiKey;
+try {
+    // eslint-disable-next-line
+    backendApiKey = require("./keys.js").backendApiKey;
+} catch (err) {
+    backendApiKey = "blank";
+}
 
 const backendUrl = 'http://' + CONFIG.backendUrl + ':' + CONFIG.backendPort + '/';
 
