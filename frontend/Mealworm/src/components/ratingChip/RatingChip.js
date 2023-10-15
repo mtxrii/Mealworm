@@ -18,7 +18,7 @@ const theme = createTheme({
 });
 
 export default function RatingChip(props) {
-    if (props.priceRating && props.rating == 0) {
+    if (props.priceRating && props.rating === 0) {
         return null;
     }
 

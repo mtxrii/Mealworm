@@ -17,7 +17,7 @@ export default function RestaurantCard(props) {
     if (props.address != null && props.address.length >= 2) {
         streetAddr = props.address.slice(0, props.address.length - 1).join(" ");
         cityState = props.address[props.address.length - 1];
-    } else if (props.address != null && props.address.length == 1) {
+    } else if (props.address != null && props.address.length === 1) {
         streetAddr = props.address[0];
     }
 
