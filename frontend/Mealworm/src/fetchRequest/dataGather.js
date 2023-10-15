@@ -9,7 +9,7 @@ try {
     // eslint-disable-next-line
     backendApiKey = require("./keys.js").backendApiKey;
 } catch (err) {
-    backendApiKey = "blank";
+    backendApiKey = process.env.REACT_APP_BACKEND_KEY;
 }
 
 const backendUrl = 'http://' + CONFIG.backendUrl + ':' + CONFIG.backendPort + '/';
