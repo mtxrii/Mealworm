@@ -12,7 +12,8 @@ try {
     backendApiKey = process.env.REACT_APP_BACKEND_KEY;
 }
 
-const backendUrl = 'http://' + CONFIG.backendUrl + ':' + CONFIG.backendPort + '/';
+const port = CONFIG.useBackendPort ? ':' + CONFIG.backendPort : '';
+const backendUrl = 'http://' + CONFIG.backendUrl + port + '/';
 
 export async function getRestaurants(isGoogle, location, distance, cuisine) {
     if (location === DEFAULT_KEYWORD) {
