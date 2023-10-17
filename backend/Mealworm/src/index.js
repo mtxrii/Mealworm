@@ -1,11 +1,17 @@
 const express = require('express');
 const cors = require('cors');
-const keys = require('./keys');
 const { getYelpRestaurants, parseYelpData, YELP_ERR_MSG } = require('./fetchRequest/yelp');
 const { getGoogleRestaurants, parseGoogleData, GOOGLE_ERR_MSG } = require('./fetchRequest/google');
 const { hasAllParams } = require('./util');
 const { logRequest, logMissingParams, logInvalidKey, logServerIssue } = require('./logger');
 const CONFIG = require('../config.json');
+
+let keys;
+try {
+    keys = require('./keys');
+} catch (err) {
+    keys = require('../keys');
+}
 
 const app = express();
 

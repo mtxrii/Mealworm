@@ -1,7 +1,14 @@
 const axios = require('axios');
-const keys = require('../keys.js');
 const { shuffle, addIdxToList } = require('../util.js');
 const CONFIG = require('../../config.json');
+
+let keys;
+try {
+    keys = require('../keys');
+} catch (err) {
+    keys = require('../../keys');
+}
+
 
 const ERR_MSG = 'GOOGLE_ERROR';
 
