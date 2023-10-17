@@ -13,7 +13,8 @@ try {
 }
 
 const port = CONFIG.useBackendPort ? ':' + CONFIG.backendPort : '';
-const backendUrl = 'http://' + CONFIG.backendUrl + port + '/';
+const pref = CONFIG.useHttps ? 'https://' : 'http://';
+const backendUrl = pref + CONFIG.backendUrl + port + '/';
 
 export async function getRestaurants(isGoogle, location, distance, cuisine) {
     if (location === DEFAULT_KEYWORD) {
