@@ -121,5 +121,5 @@ app.get('/', async (req, res) => {
 
 const port = process.env.PORT || CONFIG.appPort;
 app.listen(port, () => {
-    console.log('Server listening at http://localhost:' + port);
+    console.log('Server listening at port ' + port);
 })

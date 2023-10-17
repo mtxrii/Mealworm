@@ -1,6 +1,7 @@
 /** INSTRUCTIONS:
  *  This app requires some API keys, all of which are free to use.
  *  Copy this file and rename it to `keys.js` then fill it in with your keys.
+ *  NOTE: This file can also be placed in the backend root dir (`/backend/Mealworm`)
  * 
  *  YELP: Get an api key here: https://fusion.yelp.com
  *  Does not require a credit card and has a sufficient free quota.

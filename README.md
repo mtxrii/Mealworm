@@ -24,7 +24,7 @@ This monorepo contains both the client and server. Clone it locally to get start
       1. One of these keys is created by you and can be any password you want. It is used to ensure only your copy of the frontend accesses your copy of the backend (and uses your API keys)
    3. Rename file to `keys.js`
 5. Open file named `config.json`
-   1. Change the value of `appPort` to whatever you'd like, or leave it as 3030.
+   1. Change the value of `appPort` to whatever you'd like, or leave it as 3030. By default the port used is the env var `PORT`, this is in case the env var is not set.
 6. Run `node src/index.js` to start the backend server.
 
 ### 7. Setup Frontend
@@ -34,6 +34,6 @@ This monorepo contains both the client and server. Clone it locally to get start
     1. Replace the default value for [`backendApiKey`](https://github.com/mtxrii/Mealworm/blob/11c6816bc233cdd3cfacac9e8b5e564a9ba9a1a7/frontend/Mealworm/src/fetchRequest/keys.spec.js#L9) with the key you created in step 4.i.a
     2. Rename file to `keys.js`
        1. Alternatively you can add the value for `backendApiKey` as an env var named `REACT_APP_BACKEND_KEY`.
-11. Open file named `app-config.json` (inside `/src` dir) and change the value of `backendPort` to whatever you set it to in step 5.i
+11. Open file named `app-config.json` (inside `/src` dir) and change the value of `backendPort` to whatever you set it to in step 5.i or set `useBackendPort` to `false` to not use a port
 11. Run `npm start` to start the frontend app.
 12. Navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser
