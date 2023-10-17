@@ -46,8 +46,7 @@ async function getYelpResults(location, distance, cuisine) {
     try {
         const response = await axios.get(URL, {
             headers: {
-                'accept': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'accept': 'application/json'
             }
         });
         if (CONFIG.debugMode) {
@@ -73,8 +72,7 @@ async function getGoogleResults(location, distance) {
     try {
         const response = await axios.get(URL, {
             headers: {
-                'accept': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'accept': 'application/json'
             }
         });
         if (CONFIG.debugMode) {
