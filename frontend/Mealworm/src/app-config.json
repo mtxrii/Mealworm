@@ -2,6 +2,7 @@
     "backendUrl": "edavalos-mealworm.onrender.com",
     "backendPort": 3030,
     "useBackendPort": false,
+    "useHttps": true,
     "buttonColor": "#007c72",
     "filterSelectionBarColor": "#272d33",
     "footerColor": {
