@@ -24,7 +24,7 @@ This monorepo contains both the client and server. Clone it locally to get start
       1. One of these keys is created by you and can be any password you want. It is used to ensure only your copy of the frontend accesses your copy of the backend (and uses your API keys)
    3. Rename file to `keys.js`
 5. Open file named `config.json`
-   1. Change the value of `appPort` to whatever you'd like, or leave it as 3030.
+   1. Change the value of `appPort` to whatever you'd like, or leave it as 3030. By default the port used is the env var `PORT`, this is in case the env var is not set.
 6. Run `node src/index.js` to start the backend server.
 
 ### 7. Setup Frontend
