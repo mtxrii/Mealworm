@@ -40,3 +40,9 @@ This monorepo contains both the client and server. Clone it locally to get start
     3. Change the value of `backendUrl` to either `localhost` or whatever internal address the frontend is running on.
 12. Run `npm start` to start the frontend app.
 13. Navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser
+
+## Deploying
+A few things to keep in mind when deploying this app.
+* The port for the backend specified in the env var `PORT` takes priority over the one in `config.js`. Some hosts will set this automatically.
+* The keys file for the backend (`./src/keys.js`) can also be placed in the root directory (`./keys.js`) to accommodate hosts that only allow secrets files in the root. If there is one of each, the one in `./src` takes priority.
+* The frontend config file (`./src/app-config.json`) is setup to connect to a deployed backend by default. If you changed some settings to run it locally, make sure you turn `useHttps` back to `true`, set `useBackendPort` to `false`, and replace `backendUrl` with the URL to wherever the backend is deployed/listening.
